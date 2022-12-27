@@ -14,12 +14,12 @@
     },
     "autoload": {
         "psr-4": {
-            "Termyn\\": "src/"
+            "Termyn\\DateTime\\": "src/"
         }
     },
     "autoload-dev": {
         "psr-4": {
-            "Termyn\\Test\\": "tests"
+            "Termyn\\DateTime\\Test\\": "tests"
         }
     },
     "require": {

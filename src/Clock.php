@@ -2,7 +2,7 @@
 
 declare(strict_types=1);
 
-namespace Termyn;
+namespace Termyn\DateTime;
 
 interface Clock
 {

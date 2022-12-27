@@ -2,9 +2,9 @@
 
 declare(strict_types=1);
 
-namespace Termyn\Clock;
+namespace Termyn\DateTime\Clock;
 
-use Termyn\Clock;
+use Termyn\DateTime\Clock;
 use Termyn\DateTime\TimePeriod\Days;
 use Termyn\DateTime\TimePeriod\Hours;
 use Termyn\DateTime\TimePeriod\Minutes;

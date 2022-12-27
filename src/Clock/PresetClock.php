@@ -2,14 +2,14 @@
 
 declare(strict_types=1);
 
-namespace Termyn\Clock;
+namespace Termyn\DateTime\Clock;
 
-use Termyn\Clock;
+use Termyn\DateTime\Clock;
+use Termyn\DateTime\Instant;
 use Termyn\DateTime\TimePeriod\Days;
 use Termyn\DateTime\TimePeriod\Hours;
 use Termyn\DateTime\TimePeriod\Minutes;
 use Termyn\DateTime\TimePeriod\Seconds;
-use Termyn\Instant;
 
 final class PresetClock implements Clock
 {

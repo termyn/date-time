@@ -2,15 +2,15 @@
 
 declare(strict_types=1);
 
-namespace Termyn\Clock\System;
+namespace Termyn\DateTime\Clock\System;
 
-use Termyn\Clock\AdjustableClock;
-use Termyn\Clock\PresetClock;
+use Termyn\DateTime\Clock\AdjustableClock;
+use Termyn\DateTime\Clock\PresetClock;
+use Termyn\DateTime\Instant;
 use Termyn\DateTime\TimePeriod\Days;
 use Termyn\DateTime\TimePeriod\Hours;
 use Termyn\DateTime\TimePeriod\Minutes;
 use Termyn\DateTime\TimePeriod\Seconds;
-use Termyn\Instant;
 
 final class SystemAdjustableClock implements AdjustableClock
 {

@@ -7,30 +7,26 @@ namespace Termyn\DateTime;
 use DateTimeImmutable;
 use DateTimeInterface as DateTime;
 use Stringable;
-use Termyn\Clock;
-use Termyn\Instant;
+use Termyn\DateTime\TimeUnit\Hour;
+use Termyn\DateTime\TimeUnit\Minute;
+use Termyn\DateTime\TimeUnit\Second;
 
-final class LocalDateTime implements Stringable
+final class LocalTime implements Stringable
 {
-    final public function __construct(
-        public readonly LocalDate $date,
-        public readonly LocalTime $time,
+    public function __construct(
+        public readonly Hour $hour,
+        public readonly Minute $minute,
+        public readonly Second $second,
     ) {
     }
 
-    //    public function modify(Seconds $seconds): self
-    //    {
-    //        return new static($this->instant->shift($seconds));
-    //    }
-    //
-    //    public function difference(self $that): DateTimeInterval
-    //    {
-    //        return new DateTimeInterval($this, $that);
-    //    }
-
     public function __toString(): string
     {
-        return sprintf('%s %s', $this->date, $this->time);
+        return vsprintf('%s:%s:%s', [
+            $this->hour,
+            $this->minute,
+            $this->second,
+        ]);
     }
 
     public static function byClock(Clock $clock): self
@@ -50,31 +46,28 @@ final class LocalDateTime implements Stringable
     }
 
     public static function fromDateTime(
-        DateTime $dateTime,
+        DateTime $dateTime
     ): self {
         return new self(
-            LocalDate::fromDateTime($dateTime),
-            LocalTime::fromDateTime($dateTime),
+            Hour::fromDateTime($dateTime),
+            Minute::fromDateTime($dateTime),
+            Second::fromDateTime($dateTime)
         );
     }
 
-//    public function fromString(
-//        string $dateTime,
-//        string $dateTimeScheme,
-//    ): self {
-//
-//    }
-
     public function equals(self $that): bool
     {
-        return $this->date->equals($that->date) && $this->time->equals($that->time);
+        return $this->hour->equals($that->hour)
+            && $this->minute->equals($that->minute)
+            && $this->second->equals($that->second);
     }
 
     public function isLaterThan(self $that): bool
     {
         return match (true) {
-            $this->date->isLaterThan($that->date) => true,
-            $this->date->isLaterThanOrEqualTo($that->date) && $this->time->isLaterThan($that->time) => true,
+            $this->hour->isLaterThan($that->hour) => true,
+            $this->hour->isLaterThanOrEqualTo($that->hour) && $this->minute->isLaterThan($that->minute) => true,
+            $this->hour->isLaterThanOrEqualTo($that->hour) && $this->minute->isLaterThanOrEqualTo($that->minute) && $this->second->isLaterThan($that->second) => true,
             default => false,
         };
     }
@@ -87,8 +80,9 @@ final class LocalDateTime implements Stringable
     public function isEarlierThan(self $that): bool
     {
         return match (true) {
-            $this->date->isEarlierThan($that->date) => true,
-            $this->date->isEarlierThanOrEqualTo($that->date) && $this->time->isEarlierThan($that->time) => true,
+            $this->hour->isEarlierThan($that->hour) => true,
+            $this->hour->isEarlierThanOrEqualTo($that->hour) && $this->minute->isEarlierThan($that->minute) => true,
+            $this->hour->isEarlierThanOrEqualTo($that->hour) && $this->minute->isEarlierThanOrEqualTo($that->minute) && $this->second->isEarlierThan($that->second) => true,
             default => false,
         };
     }

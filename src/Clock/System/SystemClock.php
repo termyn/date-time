@@ -2,10 +2,10 @@
 
 declare(strict_types=1);
 
-namespace Termyn\Clock\System;
+namespace Termyn\DateTime\Clock\System;
 
-use Termyn\Clock;
-use Termyn\Instant;
+use Termyn\DateTime\Clock;
+use Termyn\DateTime\Instant;
 
 final class SystemClock implements Clock
 {

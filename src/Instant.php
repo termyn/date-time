@@ -2,7 +2,7 @@
 
 declare(strict_types=1);
 
-namespace Termyn;
+namespace Termyn\DateTime;
 
 use Termyn\DateTime\TimePeriod\Seconds;
 
@@ -30,6 +30,7 @@ final class Instant
 //    {
 //        return $this->epochSeconds->compare($that->epochSeconds);
 //    }
+
     public function shift(Seconds $seconds): self
     {
         return new self(
