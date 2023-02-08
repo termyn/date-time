@@ -4,9 +4,10 @@ declare(strict_types=1);
 
 namespace Termyn\DateTime;
 
+use Stringable;
 use Termyn\DateTime\TimePeriod\Seconds;
 
-final class Instant
+final class Instant implements Stringable
 {
     public function __construct(
         public readonly Seconds $epochSeconds
@@ -43,5 +44,10 @@ final class Instant
         return $this->epochSeconds->decrease(
             $that->epochSeconds->absolute()
         );
+    }
+
+    public function __toString(): string
+    {
+        return sprintf('%s', $this->epochSeconds->value);
     }
 }
