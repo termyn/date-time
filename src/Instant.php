@@ -48,6 +48,6 @@ final class Instant implements Stringable
 
     public function __toString(): string
     {
-        return sprintf('%s', $this->epochSeconds->value);
+        return date('Y-m-d H:i:s', $this->epochSeconds->value);
     }
 }
