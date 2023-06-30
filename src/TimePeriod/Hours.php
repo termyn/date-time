@@ -8,25 +8,22 @@ use Termyn\DateTime\TimePeriod;
 use Termyn\DateTime\TimeUnit\Day;
 use Termyn\DateTime\TimeUnit\Hour;
 
-final class Hours extends TimePeriod
+final readonly class Hours extends TimePeriod
 {
-    public static function fromDays(
-        Days $days
-    ): self {
+    public static function fromDays(Days $days): self
+    {
         return new self($days->value * Day::HOURS_IN_DAY);
     }
 
-    public static function fromMinutes(
-        Minutes $minutes
-    ): self {
+    public static function fromMinutes(Minutes $minutes): self
+    {
         return new self(
             intdiv($minutes->value, Hour::MINUTES_IN_HOUR)
         );
     }
 
-    public static function fromSeconds(
-        Seconds $seconds
-    ): self {
+    public static function fromSeconds(Seconds $seconds): self
+    {
         return new self(
             intdiv($seconds->value, Hour::SECONDS_IN_HOUR)
         );

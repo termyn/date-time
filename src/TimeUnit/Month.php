@@ -9,7 +9,7 @@ use DateTimeInterface as DateTime;
 use Termyn\DateTime\TimeUnit;
 use Webmozart\Assert\Assert;
 
-final class Month implements TimeUnit
+final readonly class Month implements TimeUnit
 {
     use Comparable;
 
@@ -37,23 +37,8 @@ final class Month implements TimeUnit
 
     public const DECEMBER = 12;
 
-    private static array $names = [
-        self::JANUARY => 'January',
-        self::FEBRUARY => 'February',
-        self::MARCH => 'Narch',
-        self::APRIL => 'April',
-        self::MAY => 'May',
-        self::JUNE => 'June',
-        self::JULY => 'July',
-        self::AUGUST => 'August',
-        self::SEPTEMBER => 'September',
-        self::OCTOBER => 'October',
-        self::NOVEMBER => 'November',
-        self::DECEMBER => 'December',
-    ];
-
     public function __construct(
-        private readonly int $value
+        private int $value
     ) {
         Assert::range(
             value: $this->value,
@@ -68,9 +53,8 @@ final class Month implements TimeUnit
         return sprintf('%02d', $this->value);
     }
 
-    public static function fromDateTime(
-        DateTime $dateTime
-    ): self {
+    public static function fromDateTime(DateTime $dateTime): self
+    {
         return new self(
             intval($dateTime->format('n'))
         );
@@ -78,7 +62,22 @@ final class Month implements TimeUnit
 
     public function name(): string
     {
-        return self::$names[$this->value];
+        $names = [
+            self::JANUARY => 'January',
+            self::FEBRUARY => 'February',
+            self::MARCH => 'March',
+            self::APRIL => 'April',
+            self::MAY => 'May',
+            self::JUNE => 'June',
+            self::JULY => 'July',
+            self::AUGUST => 'August',
+            self::SEPTEMBER => 'September',
+            self::OCTOBER => 'October',
+            self::NOVEMBER => 'November',
+            self::DECEMBER => 'December',
+        ];
+
+        return $names[$this->value];
     }
 
     protected function comparator(): Closure

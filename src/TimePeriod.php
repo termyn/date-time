@@ -4,10 +4,10 @@ declare(strict_types=1);
 
 namespace Termyn\DateTime;
 
-abstract class TimePeriod
+abstract readonly class TimePeriod
 {
     final public function __construct(
-        public readonly int $value
+        public int $value
     ) {
     }
 

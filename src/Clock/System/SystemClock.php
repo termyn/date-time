@@ -7,7 +7,7 @@ namespace Termyn\DateTime\Clock\System;
 use Termyn\DateTime\Clock;
 use Termyn\DateTime\Instant;
 
-final class SystemClock implements Clock
+final readonly class SystemClock implements Clock
 {
     public function measure(): Instant
     {

@@ -8,11 +8,11 @@ use DateTimeImmutable;
 use DateTimeInterface as DateTime;
 use Stringable;
 
-final class LocalDateTime implements Stringable
+final readonly class LocalDateTime implements Stringable
 {
     final public function __construct(
-        public readonly LocalDate $date,
-        public readonly LocalTime $time,
+        public LocalDate $date,
+        public LocalTime $time,
     ) {
     }
 

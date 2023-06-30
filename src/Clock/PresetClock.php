@@ -11,10 +11,10 @@ use Termyn\DateTime\TimePeriod\Hours;
 use Termyn\DateTime\TimePeriod\Minutes;
 use Termyn\DateTime\TimePeriod\Seconds;
 
-final class PresetClock implements Clock
+final readonly class PresetClock implements Clock
 {
     public function __construct(
-        private readonly Instant $instant
+        private Instant $instant
     ) {
     }
 

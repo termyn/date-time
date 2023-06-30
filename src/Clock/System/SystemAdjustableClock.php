@@ -12,10 +12,10 @@ use Termyn\DateTime\TimePeriod\Hours;
 use Termyn\DateTime\TimePeriod\Minutes;
 use Termyn\DateTime\TimePeriod\Seconds;
 
-final class SystemAdjustableClock implements AdjustableClock
+final readonly class SystemAdjustableClock implements AdjustableClock
 {
     public function __construct(
-        private readonly SystemClock $systemClock,
+        private SystemClock $systemClock,
     ) {
 
     }
@@ -25,18 +25,16 @@ final class SystemAdjustableClock implements AdjustableClock
         return $this->systemClock->measure();
     }
 
-    public function moveClockwise(
-        Hours|Days|Minutes|Seconds $by,
-    ): PresetClock {
+    public function moveClockwise(Hours|Days|Minutes|Seconds $by): PresetClock
+    {
         return PresetClock::set(
             instant: $this->measure(),
             shift: $by->absolute(),
         );
     }
 
-    public function moveCounterClockwise(
-        Hours|Days|Minutes|Seconds $by,
-    ): PresetClock {
+    public function moveCounterClockwise(Hours|Days|Minutes|Seconds $by): PresetClock
+    {
         return PresetClock::set(
             instant: $this->measure(),
             shift: $by->negated(),

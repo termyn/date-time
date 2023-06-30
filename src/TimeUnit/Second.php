@@ -9,12 +9,12 @@ use DateTimeInterface as DateTime;
 use Termyn\DateTime\TimeUnit;
 use Webmozart\Assert\Assert;
 
-final class Second implements TimeUnit
+final readonly class Second implements TimeUnit
 {
     use Comparable;
 
     public function __construct(
-        private readonly int $value
+        private int $value
     ) {
         Assert::range(
             value: $this->value,

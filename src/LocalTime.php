@@ -11,12 +11,12 @@ use Termyn\DateTime\TimeUnit\Hour;
 use Termyn\DateTime\TimeUnit\Minute;
 use Termyn\DateTime\TimeUnit\Second;
 
-final class LocalTime implements Stringable
+final readonly class LocalTime implements Stringable
 {
     public function __construct(
-        public readonly Hour $hour,
-        public readonly Minute $minute,
-        public readonly Second $second,
+        public Hour $hour,
+        public Minute $minute,
+        public Second $second,
     ) {
     }
 

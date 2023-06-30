@@ -8,10 +8,10 @@ use DateTimeInterface as DateTime;
 use Termyn\DateTime\TimeUnit;
 use Webmozart\Assert\Assert;
 
-final class WeekDay implements TimeUnit
+final readonly class WeekDay implements TimeUnit
 {
     public function __construct(
-        private readonly int $value
+        private int $value
     ) {
         Assert::range(
             value: $this->value,

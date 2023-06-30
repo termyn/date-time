@@ -9,7 +9,7 @@ use DateTimeInterface as DateTime;
 use Termyn\DateTime\TimeUnit;
 use Webmozart\Assert\Assert;
 
-final class Year implements TimeUnit
+final readonly class Year implements TimeUnit
 {
     use Comparable;
 
@@ -18,7 +18,7 @@ final class Year implements TimeUnit
     public const WEEKS_PER_YEAR = 53;
 
     public function __construct(
-        private readonly int $value
+        private int $value
     ) {
         Assert::range(
             value: $this->value,

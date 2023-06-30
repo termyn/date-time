@@ -9,7 +9,7 @@ use Termyn\DateTime\TimeUnit\Day;
 use Termyn\DateTime\TimeUnit\Hour;
 use Termyn\DateTime\TimeUnit\Minute;
 
-final class Seconds extends TimePeriod
+final readonly class Seconds extends TimePeriod
 {
     public static function fromDays(Days $days): self
     {

@@ -9,14 +9,14 @@ use DateTimeInterface as DateTime;
 use Termyn\DateTime\TimeUnit;
 use Webmozart\Assert\Assert;
 
-final class Week implements TimeUnit
+final readonly class Week implements TimeUnit
 {
     use Comparable;
 
     public const DAYS_PER_WEEK = 7;
 
     public function __construct(
-        private readonly int $value,
+        private int $value,
     ) {
         Assert::range(
             value: $this->value,

@@ -9,7 +9,7 @@ use DateTimeInterface as DateTime;
 use Termyn\DateTime\TimeUnit;
 use Webmozart\Assert\Assert;
 
-final class Day implements TimeUnit
+final readonly class Day implements TimeUnit
 {
     use Comparable;
 
@@ -22,7 +22,7 @@ final class Day implements TimeUnit
     public const SECONDS_IN_DAY = 86400;
 
     public function __construct(
-        private readonly int $value
+        private int $value
     ) {
         Assert::range(
             value: $this->value,

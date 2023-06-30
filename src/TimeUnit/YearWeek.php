@@ -4,6 +4,6 @@ declare(strict_types=1);
 
 namespace Termyn\DateTime\TimeUnit;
 
-final class YearWeek
+final readonly class YearWeek
 {
 }

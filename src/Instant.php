@@ -7,10 +7,10 @@ namespace Termyn\DateTime;
 use Stringable;
 use Termyn\DateTime\TimePeriod\Seconds;
 
-final class Instant implements Stringable
+final readonly class Instant implements Stringable
 {
     public function __construct(
-        public readonly Seconds $epochSeconds
+        public Seconds $epochSeconds
     ) {
     }
 

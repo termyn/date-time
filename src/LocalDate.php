@@ -11,12 +11,12 @@ use Termyn\DateTime\TimeUnit\Day;
 use Termyn\DateTime\TimeUnit\Month;
 use Termyn\DateTime\TimeUnit\Year;
 
-final class LocalDate implements Stringable
+final readonly class LocalDate implements Stringable
 {
     public function __construct(
-        public readonly Year $year,
-        public readonly Month $month,
-        public readonly Day $day,
+        public Year $year,
+        public Month $month,
+        public Day $day,
     ) {
     }
 

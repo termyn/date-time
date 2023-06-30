@@ -9,14 +9,14 @@ use DateTimeInterface as DateTime;
 use Termyn\DateTime\TimeUnit;
 use Webmozart\Assert\Assert;
 
-final class Minute implements TimeUnit
+final readonly class Minute implements TimeUnit
 {
     use Comparable;
 
     public const SECONDS_IN_MINUTE = 60;
 
     public function __construct(
-        private readonly int $value
+        private int $value
     ) {
         Assert::range(
             value: $this->value,

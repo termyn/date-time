@@ -9,7 +9,7 @@ use DateTimeInterface as DateTime;
 use Termyn\DateTime\TimeUnit;
 use Webmozart\Assert\Assert;
 
-final class Hour implements TimeUnit
+final readonly class Hour implements TimeUnit
 {
     use Comparable;
 
@@ -18,7 +18,7 @@ final class Hour implements TimeUnit
     public const SECONDS_IN_HOUR = 3600;
 
     public function __construct(
-        private readonly int $value
+        private int $value
     ) {
         Assert::range(
             value: $this->value,

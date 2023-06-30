@@ -9,17 +9,15 @@ use Termyn\DateTime\TimeUnit\Day;
 use Termyn\DateTime\TimeUnit\Hour;
 use Termyn\DateTime\TimeUnit\Minute;
 
-final class Minutes extends TimePeriod
+final readonly class Minutes extends TimePeriod
 {
-    public static function fromDays(
-        Days $days
-    ): self {
+    public static function fromDays(Days $days): self
+    {
         return new self($days->value * Day::MINUTES_IN_DAY);
     }
 
-    public static function fromHours(
-        Hours $hours
-    ): self {
+    public static function fromHours(Hours $hours): self
+    {
         return new self($hours->value * Hour::MINUTES_IN_HOUR);
     }
 
