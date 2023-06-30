@@ -35,4 +35,24 @@ final readonly class Seconds extends TimePeriod
     {
         return new self($this->value - $seconds->value);
     }
+
+    public function inDays(): Days
+    {
+        return Days::fromSeconds($this);
+    }
+
+    public function inHours(): Hours
+    {
+        return Hours::fromSeconds($this);
+    }
+
+    public function inMinutes(): Minutes
+    {
+        return Minutes::fromSeconds($this);
+    }
+
+    public function inSeconds(): self
+    {
+        return $this;
+    }
 }

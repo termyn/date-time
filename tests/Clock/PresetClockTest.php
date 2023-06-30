@@ -22,4 +22,16 @@ final class PresetClockTest extends TestCase
 
         $this->assertSame(self::TIMESTAMP, $instant->epochSeconds->value);
     }
+
+    public function testItSetByAnotherClock(): void
+    {
+        $clock = new PresetClock(
+            Instant::of(self::TIMESTAMP)
+        );
+
+        $presetClock = PresetClock::setBy($clock);
+        $measure = $presetClock->measure();
+
+        $this->assertSame(self::TIMESTAMP, $measure->epochSeconds->value);
+    }
 }

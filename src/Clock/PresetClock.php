@@ -6,10 +6,6 @@ namespace Termyn\DateTime\Clock;
 
 use Termyn\DateTime\Clock;
 use Termyn\DateTime\Instant;
-use Termyn\DateTime\TimePeriod\Days;
-use Termyn\DateTime\TimePeriod\Hours;
-use Termyn\DateTime\TimePeriod\Minutes;
-use Termyn\DateTime\TimePeriod\Seconds;
 
 final readonly class PresetClock implements Clock
 {
@@ -18,15 +14,9 @@ final readonly class PresetClock implements Clock
     ) {
     }
 
-    public static function set(
-        Instant $instant,
-        Days|Hours|Minutes|Seconds $shift
-    ): self {
-        $shiftInSeconds = ($shift instanceof Seconds) ? $shift : $shift->seconds();
-
-        return new self(
-            $instant->shift($shiftInSeconds)
-        );
+    public static function setBy(Clock $clock): self
+    {
+        return new self($clock->measure());
     }
 
     public function measure(): Instant

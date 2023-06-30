@@ -30,17 +30,22 @@ final readonly class Days extends TimePeriod
         );
     }
 
-    public function hours(): Hours
+    public function inDays(): self
+    {
+        return $this;
+    }
+
+    public function inHours(): Hours
     {
         return Hours::fromDays($this);
     }
 
-    public function minutes(): Minutes
+    public function inMinutes(): Minutes
     {
         return Minutes::fromDays($this);
     }
 
-    public function seconds(): Seconds
+    public function inSeconds(): Seconds
     {
         return Seconds::fromDays($this);
     }

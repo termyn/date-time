@@ -7,10 +7,7 @@ namespace Termyn\DateTime\Clock\System;
 use Termyn\DateTime\Clock\AdjustableClock;
 use Termyn\DateTime\Clock\PresetClock;
 use Termyn\DateTime\Instant;
-use Termyn\DateTime\TimePeriod\Days;
-use Termyn\DateTime\TimePeriod\Hours;
-use Termyn\DateTime\TimePeriod\Minutes;
-use Termyn\DateTime\TimePeriod\Seconds;
+use Termyn\DateTime\TimePeriod;
 
 final readonly class SystemAdjustableClock implements AdjustableClock
 {
@@ -25,19 +22,17 @@ final readonly class SystemAdjustableClock implements AdjustableClock
         return $this->systemClock->measure();
     }
 
-    public function moveClockwise(Hours|Days|Minutes|Seconds $by): PresetClock
+    public function moveClockwise(TimePeriod $by): PresetClock
     {
-        return PresetClock::set(
-            instant: $this->measure(),
-            shift: $by->absolute(),
+        return new PresetClock(
+            $this->measure()->shift($by->inSeconds())
         );
     }
 
-    public function moveCounterClockwise(Hours|Days|Minutes|Seconds $by): PresetClock
+    public function moveCounterClockwise(TimePeriod $by): PresetClock
     {
-        return PresetClock::set(
-            instant: $this->measure(),
-            shift: $by->negated(),
+        return new PresetClock(
+            $this->measure()->shift($by->inSeconds()->negated())
         );
     }
 }

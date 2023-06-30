@@ -4,6 +4,11 @@ declare(strict_types=1);
 
 namespace Termyn\DateTime;
 
+use Termyn\DateTime\TimePeriod\Days;
+use Termyn\DateTime\TimePeriod\Hours;
+use Termyn\DateTime\TimePeriod\Minutes;
+use Termyn\DateTime\TimePeriod\Seconds;
+
 abstract readonly class TimePeriod
 {
     final public function __construct(
@@ -40,4 +45,12 @@ abstract readonly class TimePeriod
     {
         return new static((int) abs($this->value));
     }
+
+    abstract public function inDays(): Days;
+
+    abstract public function inHours(): Hours;
+
+    abstract public function inMinutes(): Minutes;
+
+    abstract public function inSeconds(): Seconds;
 }
