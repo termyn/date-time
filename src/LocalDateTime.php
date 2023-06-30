@@ -41,9 +41,7 @@ final readonly class LocalDateTime implements Stringable
     public static function sinceInstant(Instant $instant): self
     {
         return self::fromDateTime(
-            new DateTimeImmutable(
-                sprintf('@%s', $instant->epochSeconds->value)
-            )
+            new DateTimeImmutable(sprintf('@%s', $instant->epochSeconds->value))
         );
     }
 
