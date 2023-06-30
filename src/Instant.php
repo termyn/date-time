@@ -14,6 +14,11 @@ final readonly class Instant implements Stringable
     ) {
     }
 
+    public function __toString(): string
+    {
+        return date('Y-m-d H:i:s', $this->epochSeconds->value);
+    }
+
     public static function of(
         int $epochSeconds,
     ): self {
@@ -27,10 +32,10 @@ final readonly class Instant implements Stringable
         return $this->epochSeconds->equals($that->epochSeconds);
     }
 
-//    public function compare(self $that): int
-//    {
-//        return $this->epochSeconds->compare($that->epochSeconds);
-//    }
+    //    public function compare(self $that): int
+    //    {
+    //        return $this->epochSeconds->compare($that->epochSeconds);
+    //    }
 
     public function shift(Seconds $seconds): self
     {
@@ -44,10 +49,5 @@ final readonly class Instant implements Stringable
         return $this->epochSeconds->decrease(
             $that->epochSeconds->absolute()
         );
-    }
-
-    public function __toString(): string
-    {
-        return date('Y-m-d H:i:s', $this->epochSeconds->value);
     }
 }
